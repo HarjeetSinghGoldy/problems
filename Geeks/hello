@@ -1,0 +1,96 @@
+def intersection(arrLen, arr1, arr2, arr3):
+    i = 0
+    j = 0
+    k = 0
+    c = 0
+    returnArr = []
+    returnHash = {}
+    il = arrLen[0]
+    jl = arrLen[1]
+    kl = arrLen[2]
+    minLen = min(il, jl, kl)
+    while c < minLen:
+        if arr1[i] < arr2[j]:
+            i += 1
+        elif arr2[j] < arr3[k]:
+            j += 1
+        elif arr1[i] == arr2[j] and arr2[j] == arr3[k]:
+            if not arr1[i] in returnHash:
+                returnHash[arr1[i]] = 1
+                returnArr.append(arr1[i])
+
+            i += 1
+            j += 1
+            k += 1
+        else:
+            k += 1
+        c += 1
+    # print(len(returnArr))
+    if not returnArr:
+        return -1
+    listToStr = ' '.join([str(elem) for elem in returnArr])
+    return listToStr
+
+
+def union(arrLen, a, b):
+    i = 0
+    j = 0
+    c = 0
+    returnArr = []
+    returnHash = {}
+    il = arrLen[0]
+    jl = arrLen[1]
+    minLen = min(il, jl)
+    while c < minLen:
+        if a[i] < b[j]:
+            if not a[i] in returnHash:
+                returnHash[a[i]] = 1
+                returnArr.append(a[i])
+            i += 1
+        elif b[i] < a[j]:
+            if not b[j] in returnHash:
+                returnHash[b[j]] = 1
+                returnArr.append(b[j])
+            j += 1
+        elif a[i] == b[j]:
+            if not a[i] in returnHash:
+                returnHash[a[i]] = 1
+                returnArr.append(a[i])
+            i += 1
+            j += 1
+        c += 1
+    if i < il:
+        for elm in range(i, il):
+            if not a[elm] in returnHash:
+                returnHash[a[elm]] = 1
+                returnArr.append(a[elm])
+    if j < jl:
+        for elm in range(j, jl):
+            if not b[elm] in returnHash:
+                returnHash[b[elm]] = 1
+                returnArr.append(b[elm])
+    if not returnArr:
+        return 0
+    # listToStr = ' '.join([str(elem) for elem in returnArr])
+    # print(listToStr)
+    return len(returnArr)
+
+
+def main():
+    testCases = int(input())
+    while testCases > 0:
+        inputs = []
+        for i in range(3):
+            inputs.append(input().strip().split())
+        a = list(map(int, inputs[1]))
+        b = list(map(int, inputs[2]))
+        lenArr = list(map(int, inputs[0]))
+        # print(lenArr, a, b)
+
+        print(union(lenArr, a, b))
+
+        testCases = testCases - 1
+
+
+if __name__ == "__main__":
+    main()
