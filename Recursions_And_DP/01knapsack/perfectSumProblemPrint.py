@@ -1,5 +1,4 @@
 def knapsackO1Print(a, s, n, p, t):
-    # print(a, s, p, t)
     if n == 0 and s != 0 and t[0][s]:
         p.append(a[n])
         print(p)
