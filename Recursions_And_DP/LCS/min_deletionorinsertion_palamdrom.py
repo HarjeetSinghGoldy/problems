@@ -1,5 +1,5 @@
 class Solution:
-    def minInsertions(s):
+    def longestPalindromeSubseq(s, m):
         revStr = s[::-1]
         m = len(s)
         rc = m + 1
@@ -35,7 +35,7 @@ def main():
         string = input()
         length = len(string)
         rows, cols = (length + 1, length + 1)
-        print(Solution.minInsertions(string))
+        print(Solution.longestPalindromeSubseq(string, length))
         testCases = testCases - 1
 
 
