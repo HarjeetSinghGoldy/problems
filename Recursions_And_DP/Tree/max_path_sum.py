@@ -79,3 +79,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+a = [1,2,3,4]
+a = a[1:] + a[:1]
+print(a)
