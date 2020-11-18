@@ -2,7 +2,6 @@ def kadaneFunction(n, arr):
     print(n, arr)
     cur = arr[0]
     maxSum = arr[0]
-
     for i in range(1,n):
         cur = max(arr[i], cur+arr[i])
         if maxSum < cur:
