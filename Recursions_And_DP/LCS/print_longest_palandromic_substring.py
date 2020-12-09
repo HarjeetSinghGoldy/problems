@@ -1,5 +1,5 @@
 class Solution:
-    def longestPalindrome(s: str) -> str:
+    def longestPalindrome(self,s: str) -> str:
 
         lpsLength = Solution.lps(s)
 
@@ -47,14 +47,9 @@ class Solution:
                     x -= 1
                 else:
                     y -= 1
-        # print(lcsString)
+        print(lcsString[::-1])
         return lcsString[::-1]
 
+s = "caba"
 
-def main():
-    text = input()
-    print(Solution.longestPalindrome(text))
-
-
-if __name__ == "__main__":
-    main()
+Solution().longestPalindrome(s)

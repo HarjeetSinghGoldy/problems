@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Node:
     def __init__(self, val=0, left=None, right=None, level=None):
         self.val = val
@@ -33,6 +36,32 @@ class Tree:
                             break
                 else:
                     break
+
+    def treeBuilder2(self,node_list:List[int]) -> Node:
+        root = Node(node_list[0])
+        current_node_out = [root]
+        ptr = 1
+
+        while ptr < len(node_list):
+            current_node_in = []
+            for c in current_node_out:
+                if node_list[ptr]:
+                    new_node = Node(node_list[ptr])
+                    c.left = new_node
+                    current_node_in.append(new_node)
+                ptr = ptr + 1
+                if node_list[ptr]:
+                    new_node = Node(node_list[ptr])
+                    c.right = new_node
+                    current_node_in.append(new_node)
+                ptr = ptr + 1
+            current_node_out = current_node_in
+
+        self.root = root
+
+
+
+
 
     def bfs(self):  # Level order traversal
         if self.root.val is None:
